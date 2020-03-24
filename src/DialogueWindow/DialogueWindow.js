@@ -15,12 +15,12 @@ export default function DialogueWindow() {
         <TextArea id="Description"></TextArea>
 
         <Label> Image </Label>
-        <Box height="small" width="small">
+  {/*       <Box height="small" width="small">
   <Image
     fit="cover"
     src=""
   />
-</Box>
+</Box> */}
 
         <br></br>
         <BreakDiv> </BreakDiv>

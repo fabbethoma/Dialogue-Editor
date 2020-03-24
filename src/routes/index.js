@@ -1,1 +1,2 @@
-// export const APP = '/'
+export const APP = '/'
+export const LANDING = '/';

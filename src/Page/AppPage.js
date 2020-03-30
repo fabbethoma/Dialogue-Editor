@@ -1,6 +1,7 @@
 import React from 'react';
-import logo from '../logo.svg';
+import {Link} from 'react-router-dom'
 import Dialogue from '../DialogueWindow/DialogueWindow';
+import * as ROUTES from '../routes'
 import '../App.css';
 
 const AppPage = () => {
@@ -16,6 +17,7 @@ const AppPage = () => {
                 Learn React
         </a>
         </header>
+        <Link to={ROUTES.ROLES}>ROLES</Link>
     </div>);
 }
 

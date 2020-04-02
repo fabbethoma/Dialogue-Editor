@@ -18,6 +18,7 @@ const AppPage = () => {
         </a>
         </header>
         <Link to={ROUTES.ROLES}>ROLES</Link>
+        <Link to={ROUTES.LANDING}>LANDING</Link>
     </div>);
 }
 

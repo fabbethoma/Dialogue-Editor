@@ -14,7 +14,7 @@ export const Input = styled.input`
   margin-bottom: 0.5em;
   height: 30px;
   border-bottom: 1px solid #3DCEBD;
-  color: white;
+  /* color: white; */
   font-family: 'Montserrat', sans-serif;
 
   :focus{
@@ -40,7 +40,7 @@ export const TextArea = styled.textarea`
   margin-bottom: 0.5em;
   width: 283px;
   height: 153px;
-  color: white;
+  /* color: white; */
   font-family: 'Montserrat', sans-serif;
 
   :focus{

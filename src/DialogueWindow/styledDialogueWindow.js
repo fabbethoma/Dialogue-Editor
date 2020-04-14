@@ -1,66 +1,82 @@
-import React from 'react'
 import styled from 'styled-components'
+import { Link } from 'react-router-dom'
 
 export const ContainerDiv = styled.div`
-
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   font-family: 'Montserrat', sans-serif;
   color : #765CF6;
 `;
 
 export const Input = styled.input`
-	padding: 0.5em;
+
 	background: none;
 	border: none;
-  margin-bottom: 0.5em;
+font-weight:700;
+color:#454545;
+font-size:16px;
   height: 30px;
-  border-bottom: 1px solid #3DCEBD;
+  &[title='roles-input'] {
+    width: 38%;
+  }
+  width: 91%;
   /* color: white; */
   font-family: 'Montserrat', sans-serif;
-
+  &[type='file'] {
+    display:none;
+  }
   :focus{
-    border-bottom: 3px solid #3DCEBD;
-    transition: 0.2s ease;
     outline: none;
   }
+  ::placeholder,::-webkit-input-placeholder {
+  color: #7e7e7e;
+}
 
-  ::placeholder,
-  ::-webkit-input-placeholder {
-    color: #c3c3c3;
-  }
-  :-ms-input-placeholder {
-     color: #c3c3c3;
-  }
+:-ms-input-placeholder {
+color: #7e7e7e;
+}
+
+
+
 `;
 
 export const TextArea = styled.textarea`
-	padding: 0.5em;
+	padding:10px 0;
 	background: none;
-	border: 1px solid #3DCEBD;
-	border-radius: 3px;
-  margin-bottom: 0.5em;
-  width: 283px;
-  height: 153px;
+  border: 3px solid #ffd03a87;
+  border-top: none;
+  border-left:none;
+  border-right:none;
+  width: 100%;
+  font-weight:700;
+  font-size:16px;
+  color:#454545;
+  height:32px;
   /* color: white; */
   font-family: 'Montserrat', sans-serif;
-
   :focus{
     outline: none;
   }
+    ::placeholder,::-webkit-input-placeholder {
+  color: #7e7e7e;
+}
 
-  ::placeholder,
-  ::-webkit-input-placeholder {
-    color: #c3c3c3;
-  }
-  :-ms-input-placeholder {
-     color: #c3c3c3;
-  }
+:-ms-input-placeholder {
+color: #7e7e7e;
+}
 `;
 
 export const Label = styled.label`
-
+  align-self: flex-start;
   display: block;
-
+  padding: 0;
+  color:#454545;
+  align-self: center;
+  font-weight: 700;
 `;
+
+
 
 export const BreakDiv = styled.div`
 
@@ -79,6 +95,7 @@ export const RoleSelection = styled.select`
   outline:none;
   border: none;
   font-size: 16px;
+  align-self:flex-start;
 
 `;
 
@@ -89,14 +106,21 @@ export const OptionSelect = styled.option`
 
 `;
 
-export const Title = styled.p`
+export const Title = styled.h1`
 
-font-size: 50px;
-color: #765CF6;
-
+font-size: 40px;
+color:rgba(253, 117, 130, 0.54);
+align-self:flex-start;
 margin-top: 0px;
 padding-top: 15px;
+margin-bottom:0;
+`;
 
+export const SecondTitle = styled.h2`
+  font-size:30px;
+  color: #454545;
+  align-self: flex-start;
+  font-weight: bold;
 `;
 
 export const LogoImg = styled.img`
@@ -106,3 +130,79 @@ height: 160px;
 // background: #FFA248;
 
 `;
+
+export const RolesStyledLink = styled(Link)`
+margin:0;
+text-decoration:none;
+color:#ffffff;
+background-color:#3DCEBD;
+cursor:pointer;
+font-weight:700;
+border-radius:5px;
+padding:8px;
+display: flex;
+flex-direction: row;
+align-items: center;
+&> *{
+  margin: 0;
+}
+:active {
+  background-color:#FFD03A;
+}
+`;
+
+
+export const UploadLabel = styled(Label)`
+color:#ffffff;
+background-color:#3DCEBD;
+cursor:pointer;
+font-weight:700;
+padding: 8px;
+border-radius:5px;
+:active {
+  background-color:#FFD03A;
+}
+`;
+
+export const DivInput = styled.div`
+display:flex;
+width:100%;
+flex-direction:row;
+justify-content: space-between;
+padding:10px 0;
+border-bottom:3px solid ${props => props.theme.main};
+align-items: center;
+&[id='start']{
+  justify-content:start;
+}
+`;
+
+export const RolesIcon = styled.img`
+  width:21px;
+  filter: ${props => props.theme.invert};
+  padding-right:10px;
+  &[id='padding']{
+    padding-left:36px;
+  }
+`
+export const InputText = styled.p`
+margin: 0; 
+color:#454545;
+align-self:flex-start;
+` 
+
+export const DivLabelInput = styled.div`
+padding:15px;
+width:100%;
+`;
+
+export const NextLink = styled(Link)`
+text-decoration:none;
+color:#ffffff;
+margin:30px;
+background-color:#3DCEBD;
+cursor:pointer;
+font-weight:700;
+border-radius:20px;
+padding:8px 40px;
+`

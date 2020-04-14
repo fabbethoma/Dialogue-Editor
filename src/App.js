@@ -4,6 +4,7 @@ import * as ROUTES from './routes'
 import Landing from './Page/Landing.js'
 import AppPage from './Page/AppPage';
 import Example from './Page/example';
+import Workspace from './Page/Workspace';
 import Roles from './Page/roles'
 
 const App = () => {
@@ -12,7 +13,7 @@ const App = () => {
     <Route exact path={ROUTES.LANDING} component={Landing} />
     <Route path={ROUTES.APP} component={AppPage} />
     <Route path={ROUTES.SCENARIO} component={Example} />
-    <Route path={ROUTES.WORKSPACE} component={Example} />
+    <Route path={ROUTES.WORKSPACE} component={Workspace} />
     <Route path={ROUTES.ROLES} component={Roles} />
   </Router> 
   );

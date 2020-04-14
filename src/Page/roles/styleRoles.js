@@ -41,19 +41,24 @@ const RolesUser = styled.div`
     background-color:white;
     height: 53vh;
     width: 30vw;
-    border-radius: .5rem;
     display: flex;
-    justify-content: flex-end;
+    justify-content: flex-start;
+    border:3px solid #c3c3c380;
     flex-direction: column;
 `
 const Image = styled.div`
 
 `
 const Text = styled.div`
-
+padding: 10px;
+border-top:3px solid #c3c3c380;
+border-bottom:3px solid #c3c3c380;
 `
 const Mood = styled.div`
-
+padding:10px 0;
+display:flex;
+flex-direction:row;
+align-items:center;
 `
 const StyledLink = styled(Link)`
     margin: 1rem;
@@ -67,19 +72,52 @@ const StyledLink = styled(Link)`
 const StyledH3 = styled.h3`
     font-family: Montserrat;
     color:#FD7582;
-    text-align:center;
+    margin:0;
+    font-size: 20px;
+`
+const UserLogo = styled.img`
+width: 100%;
+    height: 200px;
+    align-self: center;
+        padding: 10px 0;
+`;
+
+const RoleInput = styled.h5`
+ font-family: Montserrat;
+ margin:0;
+`;
+
+const DescriptionRoles = styled.p`
+margin:0;
+ font-family: Montserrat;
+     font-size: 13px;
 `
 
-export  {FullPage, 
-        LargeDiv, 
-        RolesSelsect,
-        RolesUser, 
-        Image,
-        Text,
-        Mood,
-        LogoImg,
-        LargeDivTitle,
-        AllRoles,
-        StyledLink,
-        StyledH3 
-    }
+const EditIconStyle = styled.img`
+height:40px;
+width:40px;
+padding:0 10px;
+`
+const MoodText = styled(DescriptionRoles)`
+font-size: 15px;
+color:#7e7e7e;
+`
+export {
+    FullPage,
+    LargeDiv,
+    RolesSelsect,
+    RolesUser,
+    Image,
+    Text,
+    Mood,
+    LogoImg,
+    LargeDivTitle,
+    AllRoles,
+    StyledLink,
+    StyledH3,
+    UserLogo,
+    RoleInput,
+    DescriptionRoles,
+    EditIconStyle,
+    MoodText
+}

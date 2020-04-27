@@ -30,7 +30,7 @@ class Workspace extends Component {
                         <STYLES.CircleStyle style={{ filter: 'brightness(1.5)' }} theme={{ color: '#6BD6D2' }} />
                         <STYLES.SideBarText>Workspace</STYLES.SideBarText>
                     </STYLES.DivSidebarButton>
-                    <STYLES.DivSidebarButton>
+                    <STYLES.DivSidebarButton as='a' href='/dialog'>
                         <STYLES.CircleStyle theme={{ color: '#FD7582' }} />
                         <STYLES.SideBarText>Dialogues</STYLES.SideBarText>
                     </STYLES.DivSidebarButton>

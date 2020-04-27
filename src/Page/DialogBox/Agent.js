@@ -74,7 +74,7 @@ const AgentBox = () => {
     return (
         <Box>
             <RoleDialogDiv>
-                <DialogRoleTitle>Name: User</DialogRoleTitle>
+                <DialogRoleTitle>Name: Agent</DialogRoleTitle>
                 <UserSelect />
             </RoleDialogDiv>
             <EditBox>

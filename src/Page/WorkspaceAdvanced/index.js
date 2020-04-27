@@ -79,6 +79,7 @@ class WorkspaceAdvanced extends Component {
                     </STYLES.DivRowMenue>
                     <STYLES.WorkspaceDiv>
                         <UserBox />
+                        <AgentBox />
                         {/* {this.state.toggleWorkspace ? <WorkspaceUser isOpen={this.showToggleUser} /> : null} */}
 
                     </STYLES.WorkspaceDiv>

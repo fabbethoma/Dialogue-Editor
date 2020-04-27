@@ -53,6 +53,7 @@ flex-direction:column;
 align-items:center;
 padding:10px 0;
 cursor:pointer;
+text-decoration:none;
 `
 
 export const CircleStyle = styled(Circle)`

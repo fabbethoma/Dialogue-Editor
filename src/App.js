@@ -1,10 +1,10 @@
 import React from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import * as ROUTES from './routes'
-import Landing from './page/Landing';
-import AppPage from './page/AppPage';
-import Example from './page/example';
-import Roles from './page/roles'
+import Landing from './Page/Landing';
+import AppPage from './Page/AppPage';
+import Example from './Page/example';
+import Roles from './Page/roles'
 
 const App = () => {
   return (

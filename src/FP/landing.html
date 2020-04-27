@@ -9,23 +9,26 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/3.0.8/fullpage.min.css"
       integrity="sha256-+dIh4jG2jQTHZwW81yUo8h6tzXWcNumyNL5XPZbwp1E="
       crossorigin="anonymous"
-      <link
-      rel="stylesheet"
-      href="css/main.css"
     />
+    <link rel="stylesheet" href="css/main.css" />
   </head>
+
   <body>
+    <!-- <div id="sprout">
+      <img src="../FP/images/sprout.png" class="sprout" />
+    </div> -->
+
     <div id="fullPage">
       <div class="section s1">
-        <h1>The First Section</h1>
+        <h1>Easy to use editor</h1>
       </div>
 
       <div class="section s2">
-        <h1>The Second Section</h1>
+        <h1>build a dialogue tree</h1>
       </div>
 
       <div class="section s3">
-        <h1>The Third Section</h1>
+        <h1>Make use of it in vr</h1>
       </div>
     </div>
 
@@ -36,8 +39,12 @@
     ></script>
 
     <script>
-      new fullPage("#fullPage", {
-        autoScrolling: true
+      new fullpage("#fullPage", {
+        autoScrolling: true,
+        navigation: true,
+        anchors: ["section1", "section2", "section3"],
+        navigationTooltips: ["Sprout", "Test", "The future"],
+        scrollingSpeed: 1500
       });
     </script>
   </body>

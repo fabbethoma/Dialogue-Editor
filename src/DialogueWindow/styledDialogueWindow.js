@@ -1,5 +1,8 @@
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
+import { AddressCard } from '@styled-icons/fa-regular/AddressCard'
+import { UserTie } from '@styled-icons/fa-solid/UserTie'
+import { User } from '@styled-icons/fa-solid/User'
 
 export const ContainerDiv = styled.div`
   display: flex;
@@ -177,13 +180,24 @@ align-items: center;
 }
 `;
 
-export const RolesIcon = styled.img`
+export const RolesIcon = styled(User)`
   width:21px;
-  filter: ${props => props.theme.invert};
+  color: #454545;
   padding-right:10px;
-  &[id='padding']{
-    padding-left:36px;
-  }
+
+
+`
+
+export const RolesIconAgent = styled(UserTie)`
+width:21px;
+color: #454545;
+padding-left:36px;
+`
+
+export const UserIDCard = styled(AddressCard)`
+width:21px;
+  color: #ffffff;
+  padding-right:10px;
 `
 export const InputText = styled.p`
 margin: 0; 

@@ -10,10 +10,14 @@ class Workspace extends Component {
         super(props);
         this.state = {
             disableToggle: true,
-            toggleWorkspace: false
+            toggleWorkspace: false,
+            whichWorkspace : true
         }
     }
-
+    swichWorkspace = () => {
+        const cond = !this.state.whichWorkspace;
+        this.setState({ whichWorkspace: cond })
+    } 
     showToggleUser = () => {
         const cond = !this.state.toggleWorkspace;
         this.setState({toggleWorkspace : cond})
@@ -66,7 +70,13 @@ class Workspace extends Component {
                         <STYLES.CircleButton onClick={this.showToggleUser}>
                             <STYLES.PlusCircle />
                         </STYLES.CircleButton>
-                        {this.state.toggleWorkspace ? <WorkspaceUser isOpen={this.showToggleUser} />: null}
+                        {this.state.toggleWorkspace ? 
+                        <div>
+                            {this.state.whichWorkspace ? 
+                                <WorkspaceUser isOpen={this.showToggleUser}  charSelect={this.swichWorkspace}/> :
+                                    <CharacterWorkSpace isOpen={this.showToggleUser} okFunction={this.swichWorkspace}/>
+                        }
+                        </div>: null}
                         
                     </STYLES.WorkspaceDiv>
                 </STYLES.DivWorkspace>

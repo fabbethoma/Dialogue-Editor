@@ -170,12 +170,12 @@ class WorkspaceUser extends Component {
                             <OptionShow showList={this.state.showCharacter ? 'block' : null} >
                                 <OptionItem as='div'>
                                     <UserGrid>
-                                        <UserItem />
-                                        <UserItem />
-                                        <UserItem />
-                                        <UserItem />
-                                        <UserItem />
-                                        <UserItem />
+                                    <UserItem onClick={this.props.charSelect} />
+                                    <UserItem onClick={this.props.charSelect} />
+                                    <UserItem onClick={this.props.charSelect} />
+                                    <UserItem onClick={this.props.charSelect} />
+                                    <UserItem onClick={this.props.charSelect} />
+                                    <UserItem onClick={this.props.charSelect} />
                                         <ArrowSelectDown />
                                     </UserGrid>
 

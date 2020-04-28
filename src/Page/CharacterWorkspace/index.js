@@ -126,7 +126,7 @@ class CharacterWorkspace extends Component {
                     </CharacterSelect>
                     <UserSelect />
                 </InputAndButton>
-                <Okbutton>Ok</Okbutton>
+                <Okbutton onClick={this.props.okFunction}>Ok</Okbutton>
                 </UserDiv>
         )
     }

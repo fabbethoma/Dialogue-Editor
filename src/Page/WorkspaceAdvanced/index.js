@@ -5,6 +5,8 @@ import * as ROUTES from '../../routes/index'
 import UserBox from '../DialogBox/User.js'
 import AgentBox from '../DialogBox/Agent.js'
 
+import { withFirebase } from '../../Firebase';
+import { withRouter } from 'react-router'
 
 const Sidebar = styled.div`
 background-color: #765CF6;
@@ -47,12 +49,39 @@ class WorkspaceAdvanced extends Component {
         super(props)
 
         this.state = {
-            disableToggle: true
+            disableToggle: true,
+            scenario: null
         }
     }
     showToggleUser = () => {
         const cond = !this.state.toggleWorkspace;
         this.setState({ toggleWorkspace: cond })
+    }
+    componentDidMount() {
+        if (!this.props.history) {
+            console.log(this.props.history)
+            return
+        }
+        console.log(this.props.history.location.state.selectedScenario)
+        this.setState({ loading: true });
+        this.props.firebase.scenario(this.props.history.location.state.selectedScenario).once('value', snapshot => {
+            const scenariosObject = snapshot.val();
+            if (scenariosObject) {
+                /*                 const scenariosList = Object.keys(scenariosObject).map(key => ({
+                                    ...scenariosObject[key],
+                                    uid: key,
+                                })); */
+                this.setState({
+                    scenario: scenariosObject,
+                    loading: false,
+                });
+            } else {
+                this.setState({
+                    scenarios: [],
+                    loading: false
+                })
+            }
+        });
     }
 
     render() {
@@ -64,7 +93,7 @@ class WorkspaceAdvanced extends Component {
                             <STYLES.LeftArrowStyle />
                             <STYLES.LinkText>Back</STYLES.LinkText>
                         </STYLES.BackButton>
-                        <STYLES.TitleScenario>Job Interview</STYLES.TitleScenario>
+                        <STYLES.TitleScenario>{this.state.scenario && this.state.scenario.description}</STYLES.TitleScenario>
                         <STYLES.SwitchDiv>
                             <STYLES.SwitchButton onClick={() => this.setState({ disableToggle: false })} theme={{ switch: '#FF6858' }} style={{ opacity: `${this.state.disableToggle ? '0.5' : '1'} ` }}>
                                 <STYLES.SwitchText theme={{ switchColor: '#000000' }}>Advanced</STYLES.SwitchText>
@@ -111,4 +140,4 @@ class WorkspaceAdvanced extends Component {
     }
 }
 
-export default WorkspaceAdvanced
+export default withFirebase(withRouter(WorkspaceAdvanced))

@@ -83,9 +83,8 @@ const AgentBox = () => {
                         <MicButton />
                         <EditButton />
                     </ButtonDiv>
-                    
-                    <TextBox>
-                        Hello ?
+
+                    <TextBox defaultValue={'Hello ?'}>
                     </TextBox>
                 </TextBoxDiv>
             </EditBox>

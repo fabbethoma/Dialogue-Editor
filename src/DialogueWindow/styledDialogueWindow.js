@@ -20,9 +20,7 @@ font-weight:700;
 color:#454545;
 font-size:16px;
   height: 30px;
-  &[title='roles-input'] {
-    width: 38%;
-  }
+
   width: 91%;
   /* color: white; */
   font-family: 'Montserrat', sans-serif;
@@ -43,6 +41,10 @@ color: #7e7e7e;
 
 
 `;
+
+export const RolesInput = styled(Input)`
+ width: 45%;
+ `
 
 export const TextArea = styled.textarea`
 	padding:10px 0;
@@ -127,7 +129,7 @@ export const SecondTitle = styled.h2`
 `;
 
 export const LogoImg = styled.img`
-width: 330px;
+width: auto;
 height: 160px;
 
 // background: #FFA248;
@@ -175,10 +177,10 @@ justify-content: space-between;
 padding:10px 0;
 border-bottom:3px solid ${props => props.theme.main};
 align-items: center;
-&[id='start']{
-  justify-content:start;
-}
 `;
+export const DivAgentInput = styled(DivInput)`
+justify-content : start;
+`
 
 export const RolesIcon = styled(User)`
   width:21px;
@@ -191,7 +193,7 @@ export const RolesIcon = styled(User)`
 export const RolesIconAgent = styled(UserTie)`
 width:21px;
 color: #454545;
-padding-left:36px;
+padding-left:15px;
 `
 
 export const UserIDCard = styled(AddressCard)`
@@ -203,20 +205,30 @@ export const InputText = styled.p`
 margin: 0; 
 color:#454545;
 align-self:flex-start;
-` 
+`
 
 export const DivLabelInput = styled.div`
-padding:15px;
-width:100%;
+padding:15px 0;
 `;
 
 export const NextLink = styled(Link)`
 text-decoration:none;
 color:#ffffff;
-margin:30px;
+font-family:'Montserrat', sans-serif;
+border: none;
 background-color:#3DCEBD;
 cursor:pointer;
 font-weight:700;
+font-size: 15px;
 border-radius:20px;
 padding:8px 40px;
+width:fit-content;
+align-self: center;
+margin:20px;
+`
+
+export const FormStyle = styled.form`
+display :flex;
+flex-direction: column;
+
 `

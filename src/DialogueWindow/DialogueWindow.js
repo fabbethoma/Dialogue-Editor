@@ -91,11 +91,16 @@ class DiaglogueWindow extends Component {
             <>
 
                 <STYLES.LogoImg src={SproutLogo} alt="sprout-logo" />
-
+                <STYLES.Title>Dialog Editor</STYLES.Title>
                 <STYLES.ContainerDiv>
-                    <STYLES.SecondTitle>{scenarios && scenarios.map((scenario, index) => <p onClick={() => this.loadScenario(scenario.uid)} key={index}>{scenario.companyName}: {scenario.description}</p>)}</STYLES.SecondTitle>
-                    <STYLES.Title>Diaglog Editor</STYLES.Title>
-                    <STYLES.SecondTitle>Title of Scenario</STYLES.SecondTitle>
+                        <div>
+
+                        </div>
+                        <div>
+
+                        </div>
+                    
+                    <STYLES.SecondTitle> Create Your Scenario: </STYLES.SecondTitle>
                     <STYLES.FormStyle onSubmit={this.handleSubmit}>
                         <STYLES.DivLabelInput>
                             <STYLES.InputText> Company name: </STYLES.InputText>
@@ -106,7 +111,7 @@ class DiaglogueWindow extends Component {
 
                         <STYLES.DivLabelInput>
                             <STYLES.InputText> Description: </STYLES.InputText>
-                            <STYLES.TextArea name="description" value={description} onChange={this.handleChange} placeholder="Type here..."></STYLES.TextArea>
+                            <STYLES.TextArea name="description" value={description} onChange={this.handleChange} placeholder='Example: "Get ready for an interview" '></STYLES.TextArea>
                         </STYLES.DivLabelInput>
                         <STYLES.DivLabelInput>
                             <STYLES.InputText>Select Roles:</STYLES.InputText>
@@ -140,7 +145,7 @@ class DiaglogueWindow extends Component {
 
                         <br></br>
                         {/* <STYLES.NextLink to={ROUTES.WORKSPACE}>Next</STYLES.NextLink> */}
-                        <STYLES.NextLink as='input' type="submit" value="Next" />
+                        <STYLES.NextLink as='input' type="submit" value="Create" />
                     </STYLES.FormStyle>
                     {/*   
                 <RoleSelection>
@@ -148,7 +153,10 @@ class DiaglogueWindow extends Component {
                 <OptionSelect value="1"> Virtual Character </OptionSelect>
                 </RoleSelection>
         */}
-                </STYLES.ContainerDiv>
+                    <STYLES.EmptyContainer></STYLES.EmptyContainer>
+                    <STYLES.ScenarioContainerTitle> Your Scenarios</STYLES.ScenarioContainerTitle>
+                    <STYLES.ScenarioTitle>{scenarios && scenarios.map((scenario, index) => <p onClick={() => this.loadScenario(scenario.uid)} key={index}>{scenario.companyName}: {scenario.description}</p>)} </STYLES.ScenarioTitle>
+                </STYLES.ContainerDiv>  
             </>
         )
     }

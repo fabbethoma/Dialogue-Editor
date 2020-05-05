@@ -10,15 +10,27 @@ export const ContainerDiv = styled.div`
   align-items: center;
   font-family: 'Montserrat', sans-serif;
   color : #765CF6;
+  display: grid;
+  grid-template-column: 1fr 1fr 1fr;
+  grid-template-row: 20% 20% 60%;
+`;
+
+export const EmptyContainer = styled.div`
+// border: 1px solid black;
+width: 100px;
+height: 50px;
+grid-column: 2;
+grid-row: 1/3;
+
 `;
 
 export const Input = styled.input`
 
 	background: none;
 	border: none;
-font-weight:700;
-color:#454545;
-font-size:16px;
+  font-weight:700;
+  color:#454545;
+  font-size:16px;
   height: 30px;
 
   width: 91%;
@@ -113,46 +125,76 @@ export const OptionSelect = styled.option`
 
 export const Title = styled.h1`
 
-font-size: 40px;
-color:rgba(253, 117, 130, 0.54);
-align-self:flex-start;
-margin-top: 0px;
-padding-top: 15px;
-margin-bottom:0;
+  font-size: 40px;
+  color:rgba(253, 117, 130, 0.54);
+  align-self:flex-start;
+  margin-top: 0px;
+  padding-top: 15px;
+  margin-bottom:0;
+  padding-left: 50px;
+  padding-right: 50px;
+  display: flex;
+  align-self: center;
+  font-family: 'Montserrat', sans-serif;
+  color : #765CF6;
 `;
 
 export const SecondTitle = styled.h2`
   font-size:30px;
-  color: #454545;
+  color: #404040;
   align-self: flex-start;
   font-weight: bold;
+  grid-row: 1;
+  grid-column: 1;
+`;
+
+export const ScenarioTitle = styled.h3`
+  font-size:20px;
+  color: #404040;
+  display: flex;
+  flex-direction: column;
+  // justify-content: flex-start;
+  align-self: flex-start;
+  font-weight: bold;
+  
+  cursor: pointer;
+  padding-bottom: 5px;
+  grid-column: 3;
+  grid-row: 3;
+
+  p {
+    padding-bottom: 5px;
+    border-bottom: 2px ridge #B3B3B3;
+
+  }
+
 `;
 
 export const LogoImg = styled.img`
-width: auto;
-height: 160px;
-
-// background: #FFA248;
+  width: auto;
+  height: 160px;
+  margin-top: 10px;
+  // background: #FFA248;
 
 `;
 
 export const RolesStyledLink = styled(Link)`
-margin:0;
-text-decoration:none;
-color:#ffffff;
-background-color:#3DCEBD;
-cursor:pointer;
-font-weight:700;
-border-radius:5px;
-padding:8px;
-display: flex;
-flex-direction: row;
-align-items: center;
-&> *{
-  margin: 0;
-}
-:active {
-  background-color:#FFD03A;
+  margin:0;
+  text-decoration:none;
+  color:#ffffff;
+  background-color:#3DCEBD;
+  cursor:pointer;
+  font-weight:700;
+  border-radius:5px;
+  padding:8px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  &> *{
+    margin: 0;
+  }
+    :active {
+    background-color:#FFD03A;
 }
 `;
 
@@ -170,16 +212,16 @@ border-radius:5px;
 `;
 
 export const DivInput = styled.div`
-display:flex;
-width:100%;
-flex-direction:row;
-justify-content: space-between;
-padding:10px 0;
-border-bottom:3px solid ${props => props.theme.main};
-align-items: center;
+  display:flex;
+  width:100%;
+  flex-direction:row;
+  justify-content: space-between;
+  padding:10px 0;
+  border-bottom:3px solid ${props => props.theme.main};
+  align-items: center;
 `;
 export const DivAgentInput = styled(DivInput)`
-justify-content : start;
+  justify-content : start;
 `
 
 export const RolesIcon = styled(User)`
@@ -191,20 +233,20 @@ export const RolesIcon = styled(User)`
 `
 
 export const RolesIconAgent = styled(UserTie)`
-width:21px;
-color: #454545;
-padding-left:15px;
+  width:21px;
+  color: #454545;
+
 `
 
 export const UserIDCard = styled(AddressCard)`
-width:21px;
+  width:21px;
   color: #ffffff;
   padding-right:10px;
 `
 export const InputText = styled.p`
-margin: 0; 
-color:#454545;
-align-self:flex-start;
+  margin: 0; 
+  color:#454545;
+  align-self:flex-start;
 `
 
 export const DivLabelInput = styled.div`
@@ -212,23 +254,45 @@ padding:15px 0;
 `;
 
 export const NextLink = styled(Link)`
-text-decoration:none;
-color:#ffffff;
-font-family:'Montserrat', sans-serif;
-border: none;
-background-color:#3DCEBD;
-cursor:pointer;
-font-weight:700;
-font-size: 15px;
-border-radius:20px;
-padding:8px 40px;
-width:fit-content;
-align-self: center;
-margin:20px;
+  text-decoration:none;
+  color:#ffffff;
+  font-family:'Montserrat', sans-serif;
+  border: none;
+  background-color:#3DCEBD;
+  cursor:pointer;
+  font-weight:700;
+  font-size: 15px;
+  border-radius:20px;
+  padding:8px 40px;
+  width:fit-content;
+  align-self: center;
+  margin:20px;
 `
 
 export const FormStyle = styled.form`
-display :flex;
-flex-direction: column;
-
+  display :flex;
+  flex-direction: column;
+  width: 100%;
+  align:flex-start;
+  grid-column: 1;
+  grid-row: 3;
 `
+
+// export const ScenarioContainer = styled.div`
+//   display: flex;
+//   flex-direction: row;
+//   grid-column: 3;
+//   grid-row: 3;
+
+// `;
+
+export const ScenarioContainerTitle = styled.h3`
+
+  grid-row: 1;
+  grid-column: 3;
+  padding-bottom: 5px;
+  border-bottom: 3px dotted #D9D9D9;
+  display: flex;
+  justify-content: center;
+
+`;

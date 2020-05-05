@@ -3,6 +3,8 @@ import * as ROUTES from '../../routes/index'
 import * as STYLES from './style'
 import WorkspaceUser from '../WorkspaceUser/index.js'
 import CharacterWorkSpace from '../CharacterWorkspace'
+import { withFirebase } from '../../Firebase';
+import { withRouter } from 'react-router'
 
 
 class Workspace extends Component {
@@ -11,7 +13,8 @@ class Workspace extends Component {
         this.state = {
             disableToggle: true,
             toggleWorkspace: false,
-            whichWorkspace : true
+            whichWorkspace : true,
+            scenarios: []
         }
     }
     swichWorkspace = () => {
@@ -23,7 +26,38 @@ class Workspace extends Component {
         this.setState({toggleWorkspace : cond})
     }
 
+    componentDidMount() {
+        if (!this.props.history) {
+            console.log(this.props.history)
+            return
+        }
+        console.log(this.props.history.location.state.selectedScenario)
+        this.setState({ loading: true });
+        this.props.firebase.scenario(this.props.history.location.state.selectedScenario).once('value', snapshot => {
+            const scenariosObject = snapshot.val();
+            if (scenariosObject) {
+                /*                 const scenariosList = Object.keys(scenariosObject).map(key => ({
+                                    ...scenariosObject[key],
+                                    uid: key,
+                                })); */
+                this.setState({
+                    scenario: scenariosObject,
+                    loading: false,
+                });
+            } else {
+                this.setState({
+                    scenarios: [],
+                    loading: false
+                })
+            }
+        });
+    }
+
+    
+
     render() {
+        const {scenarios, companyName, description } = this.state;
+
         return (
             <STYLES.WorkspacePage>
                 <STYLES.SideBar>
@@ -53,7 +87,7 @@ class Workspace extends Component {
                             <STYLES.LeftArrowStyle />
                             <STYLES.LinkText>Back</STYLES.LinkText>
                         </STYLES.BackButton>
-                        <STYLES.TitleScenario>Job Interview</STYLES.TitleScenario>
+                        <STYLES.TitleScenario>{this.state.scenario && this.state.scenario.companyName}: {this.state.scenario && this.state.scenario.description }</STYLES.TitleScenario>
                         <STYLES.SwitchDiv>
                             <STYLES.SwitchButton onClick={() => this.setState({ disableToggle: false })} theme={{ switch: '#FF6858' }} style={{ opacity: `${this.state.disableToggle ? '0.5' : '1'} ` }}>
                                 <STYLES.SwitchText theme={{ switchColor: '#000000' }}>Advanced</STYLES.SwitchText>
@@ -85,4 +119,4 @@ class Workspace extends Component {
     }
 }
 
-export default Workspace;
+export default withFirebase(withRouter(Workspace));

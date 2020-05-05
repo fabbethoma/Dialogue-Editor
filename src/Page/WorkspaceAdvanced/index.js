@@ -62,7 +62,7 @@ class WorkspaceAdvanced extends Component {
             console.log(this.props.history)
             return
         }
-        console.log(this.props.history.location.state.selectedScenario)
+        
         this.setState({ loading: true });
         this.props.firebase.scenario(this.props.history.location.state.selectedScenario).once('value', snapshot => {
             const scenariosObject = snapshot.val();

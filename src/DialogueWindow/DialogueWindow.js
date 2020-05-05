@@ -80,7 +80,7 @@ class DiaglogueWindow extends Component {
     };
     loadScenario(uid) {
         this.props.history.push({
-            pathname: ROUTES.SCENARIO,
+            pathname: ROUTES.WORKSPACE,
             search: '',
             state: { selectedScenario: uid }
         })

@@ -5,11 +5,17 @@ import RolesPopup from './PopUp'
 import * as ROUTES from '../routes'
 import { withRouter } from 'react-router'
 
+import shortid from 'shortid'
+
 import { withFirebase } from '../Firebase';
+
+import MicRecorder from 'mic-recorder-to-mp3';
 
 const theme = {
     main: '#FFA248',
 }
+
+const Mp3Recorder = new MicRecorder({ bitRate: 128 });
 
 class DiaglogueWindow extends Component {
     constructor(props) {
@@ -20,10 +26,14 @@ class DiaglogueWindow extends Component {
             loading: false,
             scenarios: [],
             companyName: '',
-            description: ''
+            description: '',
+            isRecording: false,
+            blobURL: '',
+            isBlocked: false,
         }
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.stop = this.stop.bind(this);
     }
     UserIconClicked = (event) => {
         event.preventDefault();
@@ -55,6 +65,16 @@ class DiaglogueWindow extends Component {
                 })
             }
         });
+        navigator.getUserMedia({ audio: true },
+            () => {
+                console.log('Permission Granted');
+                this.setState({ isBlocked: false });
+            },
+            () => {
+                console.log('Permission Denied');
+                this.setState({ isBlocked: true })
+            },
+        );
     }
     componentWillUnmount() {
         this.props.firebase.scenarios().off();
@@ -85,6 +105,30 @@ class DiaglogueWindow extends Component {
             state: { selectedScenario: uid }
         })
     }
+    start = () => {
+        if (this.state.isBlocked) {
+            console.log('Permission Denied');
+        } else {
+            Mp3Recorder
+                .start()
+                .then(() => {
+                    this.setState({ isRecording: true });
+                }).catch((e) => console.error(e));
+        }
+    };
+    stop() {
+        Mp3Recorder
+            .stop()
+            .getMp3()
+            .then(([buffer, blob]) => {
+                const id = shortid.generate()
+                const blobURL = URL.createObjectURL(blob)
+                this.setState({ blobURL, isRecording: false });
+                this.props.firebase.audio().child('audio/' + id).put(blob).then(function (snapshot) {
+                    console.log('Uploaded a blob or file!');
+                });
+            }).catch((e) => console.log(e));
+    };
     render() {
         const { agentPopup, userPopup, scenarios, companyName, description } = this.state
         return (
@@ -93,13 +137,19 @@ class DiaglogueWindow extends Component {
                 <STYLES.LogoImg src={SproutLogo} alt="sprout-logo" />
                 <STYLES.Title>Dialog Editor</STYLES.Title>
                 <STYLES.ContainerDiv>
-                        <div>
+                    <div>
 
-                        </div>
-                        <div>
+                    </div>
+                    <div>
+                        <button onClick={this.start} disabled={this.state.isRecording}>
+                            Record
+                        </button>
+                        <button onClick={this.stop} disabled={!this.state.isRecording}>
+                            Stop
+                        </button>
+                        <audio src={this.state.blobURL} controls="controls" />
+                    </div>
 
-                        </div>
-                    
                     <STYLES.SecondTitle> Create Your Scenario: </STYLES.SecondTitle>
                     <STYLES.FormStyle onSubmit={this.handleSubmit}>
                         <STYLES.DivLabelInput>
@@ -156,7 +206,7 @@ class DiaglogueWindow extends Component {
                     <STYLES.EmptyContainer></STYLES.EmptyContainer>
                     <STYLES.ScenarioContainerTitle> Your Scenarios</STYLES.ScenarioContainerTitle>
                     <STYLES.ScenarioTitle>{scenarios && scenarios.map((scenario, index) => <p onClick={() => this.loadScenario(scenario.uid)} key={index}>{scenario.companyName}: {scenario.description}</p>)} </STYLES.ScenarioTitle>
-                </STYLES.ContainerDiv>  
+                </STYLES.ContainerDiv>
             </>
         )
     }

@@ -1,5 +1,5 @@
-export const APP = '/';
+export const APP = '/app';
 export const LANDING = '/';
 export const WORKSPACE = '/workspace';
 export const ROLES = '/roles';
-export const SCENARIO = '/scenario';
+export const SCENARIO = '/dialog';

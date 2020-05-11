@@ -5,6 +5,7 @@ import WorkspaceUser from '../WorkspaceUser/index.js'
 import CharacterWorkSpace from '../CharacterWorkspace'
 import { withFirebase } from '../../Firebase';
 import { withRouter } from 'react-router'
+import Exchange from '../../Exchange/exchange.js'
 
 
 class Workspace extends Component {
@@ -57,6 +58,8 @@ class Workspace extends Component {
 
     render() {
         const {scenarios, companyName, description } = this.state;
+    
+     
 
         return (
             <STYLES.WorkspacePage>
@@ -106,10 +109,11 @@ class Workspace extends Component {
                         </STYLES.CircleButton>
                         {this.state.toggleWorkspace ? 
                         <div>
-                            {this.state.whichWorkspace ? 
+                                <Exchange />
+                            {/* {this.state.whichWorkspace ? 
                                 <WorkspaceUser isOpen={this.showToggleUser}  charSelect={this.swichWorkspace}/> :
                                     <CharacterWorkSpace isOpen={this.showToggleUser} okFunction={this.swichWorkspace}/>
-                        }
+                        } */}
                         </div>: null}
                         
                     </STYLES.WorkspaceDiv>

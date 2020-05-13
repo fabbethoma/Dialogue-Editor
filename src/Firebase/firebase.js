@@ -90,6 +90,8 @@ class Firebase {
 
   exchanges = () => this.db.ref('exchanges');
 
+  scenarioExchange = uid => this.db.ref(`scenarios/${uid}/exchanges`)
+
   audio = () => this.storage.ref();
 
 

@@ -36,7 +36,7 @@ class ExchangeEdit extends Component {
     exchange['scenarios'] = { [this.props.scenarioID]: true }
     
     e.preventDefault();
-    const ref = this.props.firebase.exchanges().push(exchange); // change to update
+    //const ref = this.props.firebase.exchanges().push(exchange); // change to update
     this.setState(INITIAL_STATE)
     console.log(ref.key)
     this.props.firebase.scenario(this.props.scenarioID).child('exchanges').update({ [ref.key]: true })

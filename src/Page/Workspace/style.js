@@ -134,12 +134,14 @@ margin: 10px 0;
 export const WorkspaceDiv = styled.div`
 height: 100%;
 width:100%;
+overflow-y: scroll;
 `;
 
 export const DivWorkspace = styled.div`
 display:flex;
 flex-direction:column;
 width: 100%;
+
 `
 
 export const DivRowMenue = styled.div`

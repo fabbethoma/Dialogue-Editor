@@ -2,31 +2,41 @@ import React, {Component} from 'react'
 // import Form from 'form-js'
 import { withFirebase } from '../../Firebase';
 
+import * as STYLES from './style'
+
 //import * as STYLES from '../styledExchange'
 
-
+import ExchangeEdit from '../../ExchangeEdit';
 
 class ExchangeList extends Component {
   constructor(props) {
       super(props)
-    this.state = { exchanges: null }
+    this.state = { 
+      exchanges: null,
+      editExchange: null 
+    }
 
   }
+  toggleEditExchange = (exchangeID = null) => {
+    this.setState({ editExchange: exchangeID})
+}
   componentDidMount () {
 
     // this.props.exchanges : {-M7D9_kEGnRWODa19EJS: true, -M7D9kEEmH1H3lQ
-    const validExchanges = Object.keys(this.props.exchanges);
+    
     this.props.firebase.exchanges().on('value', snapshot => {
         const exchangesObj = snapshot.val();
       let exchangesList = Object.keys(exchangesObj).map(key => {
-          if (validExchanges.includes(key)) {
+         // if (validExchanges.includes(key)) {
           return ({
         ...exchangesObj[key],
         uid: key,
         })
+        /*
           } else {
               return null;
           }
+          */
       });
       console.log(exchangesList)
       exchangesList = exchangesList.filter(Boolean)
@@ -45,30 +55,52 @@ class ExchangeList extends Component {
   }
 
  handleRemoveClick = index => { 
-     
+    //  this.props.firebase.exchanges(index).remove();
  }
 
   handleEditClick = () => {
       
   }
 
+  deleteExchange = (event) => {
+    event.preventDefault();
+
+    const keyID = event.target.parentNode.id // check out element.closest()
+    const getProps = this.props.exchanges
+    console.log(keyID);
+    const idKey = Object.keys(this.state.exchanges)[keyID]
+    const Obj = this.state.exchanges
+    const newObj = Object.keys(Obj).reduce((object, key) => {
+      if (key !== idKey) {
+        object[key] = Obj[key]
+      }
+      return object
+    }, {})
+    console.log(newObj);
+    // this.props.firebase.exchanges(idKey).child(`/${idKey}`).remove().then(value => {
+    //     this.props.firebase.scenarioExchange(this.props.history.location.state.selectedScenario).child(`/${idKey}`).remove()
+    // })
+  } 
+
 
   render() {
     //const { onSubmit,onChange} = this.props
-    
+    const validExchanges = Object.keys(this.props.exchanges);
     return (
       <div>
 
-        {this.state.exchanges ? this.state.exchanges.map((item,key) => (
-            <div key={key} id={key}>
-                <h4 onClick={() => this.props.toggleEditExchange(item.uid)}>Exchange key {key+1}</h4>
-                <p>Data: {item.data}</p>
-                <p>Type: {item.type}</p>
-                <p>Question: {item.question}</p>
-                <p>Answer: {item.answer}</p>
-                <button onClick={this.deleteExchange} >Delete Exchange</button>
-            </div>
+        {this.state.exchanges ? this.state.exchanges.filter(ex => validExchanges.includes(ex.uid)).map((item,key) => (
+            <STYLES.exchangeDiv key={key} id={key}>
+                <h4>Exchange key {key+1} <STYLES.editButton onClick={() => this.toggleEditExchange(item.uid)}> EDIT </STYLES.editButton> </h4>
+                <STYLES.p>Data: {item.data}</STYLES.p>
+                <STYLES.p>Type: {item.type}</STYLES.p>
+                <STYLES.p>Question: {item.question}</STYLES.p>
+                <STYLES.p>Answer: {item.answer}</STYLES.p>
+                <STYLES.deleteButton onClick={this.deleteExchange}> Delete Exchange </STYLES.deleteButton>
+            </STYLES.exchangeDiv>
         )) : null}
+        {this.state.editExchange && <ExchangeEdit exchange={this.state.exchanges.find(ex => ex.uid = this.state.editExchange)} exchangeID={this.state.editExchange} toggleEditExchange={this.toggleEditExchange} />}
+
 
       </div>                        
     )

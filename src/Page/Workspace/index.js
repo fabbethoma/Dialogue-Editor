@@ -35,7 +35,7 @@ class Workspace extends Component {
         const cond = !this.state.toggleWorkspace;
         this.setState({toggleWorkspace : cond})
     }
-    toggleEditExchange = (exchangeID) => {
+    toggleEditExchange = (exchangeID = null) => {
         this.setState({ editExchange: exchangeID})
     }
     componentDidMount() {
@@ -48,28 +48,10 @@ class Workspace extends Component {
         this.props.firebase.scenario(this.props.history.location.state.selectedScenario).on('value', snapshot => {
             const scenariosObject = snapshot.val();
             if (scenariosObject) {
-                /*                 const scenariosList = Object.keys(scenariosObject).map(key => ({
-                                    ...scenariosObject[key],
-                                    uid: key,
-                                })); */
+
                 const arrayID = scenariosObject.exchanges
                 scenariosObject['uid'] = this.props.history.location.state.selectedScenario;
-/* 
-                if (scenariosObject.exchanges) {
-                    this.props.firebase.exchanges().once('value', snapshot => {
-                        const exchangeObj = snapshot.val()
-                        const newObj = {}
-                        Object.keys(arrayID).forEach(item => {
 
-                            newObj[item] = exchangeObj[item]
-                        })
-                        this.setState({
-                            exchangeLoad: true,
-                            exchanges: newObj
-                        })
-                    })
-
-                } */
                 this.setState({
                   //  exchangesID: arrayID,
                     scenario: scenariosObject,
@@ -84,42 +66,11 @@ class Workspace extends Component {
         });
     }
     componentWillUnmount () {
+        if (this.props.history.location.state) {
         this.props.firebase.scenario(this.props.history.location.state.selectedScenario).off();
     }
-    /* onChangeExchange = (event)=> {
-        this.setState({[event.target.id] : event.target.value})
     }
-    
-    SubmitExchange = (event) => {
-        event.preventDefault();
-        const arrayOrder = this.state.scenario.exchangeOrder ? Object.values(this.state.scenario.exchangeOrder) : []
-        console.log(arrayOrder);
-        
-        const Exchangeid = this.props.firebase.exchanges().push({
-            data: this.state.data,
-            type: this.state.type,
-            question : this.state.question,
-            answer : this.state.answer,
-            scenarios : {
-                [this.props.history.location.state.selectedScenario] : true
-            }
-        })
-        console.log(this.state.exchangesID);  
-        const newOb = { [Exchangeid.key]: true }
-        
-        const allObj = { ...this.state.exchangesID, ...newOb}
-        arrayOrder.push(Exchangeid.key)
-       
-        const orderObj = Object.assign({},arrayOrder )
-        this.props.firebase.scenarioExchange(this.props.history.location.state.selectedScenario).set({
-            ...allObj
-        })
-        .then(item => {
-            this.props.firebase.scenario(this.props.history.location.state.selectedScenario).child('/exchangeOrder').set({
-                ...orderObj
-            })
-        })
-    } */
+   
     deleteExchange = (event) =>{
     event.preventDefault();
         
@@ -136,14 +87,12 @@ class Workspace extends Component {
             return object
         }, {})
         console.log(newObj);
-        // this.props.firebase.exchanges(idKey).child(`/${idKey}`).remove().then(value => {
-        //     this.props.firebase.scenarioExchange(this.props.history.location.state.selectedScenario).child(`/${idKey}`).remove()
-        // })
+
     }
     
 
     render() {
-        const {scenarios, companyName, description ,exchangeLoad,exchanges} = this.state;
+        const {scenarios, companyName, description ,exchangeLoad, exchanges} = this.state;
         return (
             <STYLES.WorkspacePage>
                 <STYLES.SideBar>
@@ -192,28 +141,16 @@ class Workspace extends Component {
                         </STYLES.CircleButton>
                         {this.state.toggleWorkspace ? 
                         <div>
-                                {!this.state.editExchange ?
-                                <Exchange scenarioID={this.state.scenario.uid} /> : <ExchangeEdit scenarioID={this.state.scenario.uid} exchangeID={this.state.editExchange} />}
+                               
+                                <Exchange scenarioID={this.state.scenario.uid} />
                             {/* {this.state.whichWorkspace ? 
                                 <WorkspaceUser isOpen={this.showToggleUser}  charSelect={this.swichWorkspace}/> :
                                     <CharacterWorkSpace isOpen={this.showToggleUser} okFunction={this.swichWorkspace}/>
                         } */}
                         </div>: null}
+                        {this.state.scenario && this.state.editExchange && <ExchangeEdit scenarioID={this.state.scenario.uid} exchangeID={this.state.editExchange} toggleEditExchange={this.toggleEditExchange} />}
                         { (this.state.scenario && this.state.scenario.exchanges) && <ExchangeList exchanges={this.state.scenario.exchanges} toggleEditExchange={this.toggleEditExchange} /> }
-                        {/*exchangeLoad ? 
-                            <div>
-                                {Object.values(exchanges).map((item,key) => (
-                                    <div key={key} id={key}>
-                                        <h4>Exchange key {key+1}</h4>
-                                        <p>Data: {item.data}</p>
-                                        <p>Type: {item.type}</p>
-                                        <p>Question: {item.question}</p>
-                                        <p>Answer: {item.answer}</p>
-                                        <button onClick={this.deleteExchange} >Delete Exchange</button>
-                                    </div>
-                                ))}
-                            </div>
-                                : null*/}
+
                     </STYLES.WorkspaceDiv>
                 </STYLES.DivWorkspace>
             </STYLES.WorkspacePage>

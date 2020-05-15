@@ -66,20 +66,19 @@ class ExchangeList extends Component {
     event.preventDefault();
 
     const keyID = event.target.parentNode.id // check out element.closest()
-    const getProps = this.props.exchanges
+    const getUid = this.props.scenarioID
     console.log(keyID);
-    const idKey = Object.keys(this.state.exchanges)[keyID]
+    const idKey = Object.keys(this.props.exchanges)[keyID]
     const Obj = this.state.exchanges
     const newObj = Object.keys(Obj).reduce((object, key) => {
-      if (key !== idKey) {
+      if (key !== keyID) {
         object[key] = Obj[key]
       }
       return object
     }, {})
-    console.log(newObj);
-    // this.props.firebase.exchanges(idKey).child(`/${idKey}`).remove().then(value => {
-    //     this.props.firebase.scenarioExchange(this.props.history.location.state.selectedScenario).child(`/${idKey}`).remove()
-    // })
+    this.props.firebase.exchange(idKey).remove().then(value => {
+        this.props.firebase.scenarioExchange(getUid).child(`/${idKey}`).remove()
+    })
   } 
 
 

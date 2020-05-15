@@ -92,15 +92,18 @@ class ExchangeList extends Component {
 
         {this.state.exchanges ? this.state.exchanges.filter(ex => validExchanges.includes(ex.uid)).map((item,key) => (
             <STYLES.exchangeDiv key={key} id={key}>
-                <h4>Exchange key {key+1} <STYLES.editButton onClick={() => this.toggleEditExchange(item.uid)}> EDIT </STYLES.editButton> 
+                <h4><STYLES.editButton onClick={() => this.toggleEditExchange(item.uid)}> EDIT </STYLES.editButton> 
+                Role: {item.role}
                 <STYLES.deleteButton onClick={this.deleteExchange}> X </STYLES.deleteButton>
                 </h4>
-                <STYLES.p>Data: {item.data}</STYLES.p>
-                <STYLES.p>Type: {item.type}</STYLES.p>
-                <STYLES.p>Question: {item.question}</STYLES.p>
-                <STYLES.p>Answer: {item.answer}</STYLES.p>
+                {/* <STYLES.p>Role: {item.role}</STYLES.p> */}
+                <STYLES.p> <b>Text: </b> {item.text}</STYLES.p>
+                <STYLES.p> <b>Mood: </b> {item.mood}</STYLES.p>
+                
                 {/* <AudioPlayer url={item.audio} /> */}
                 {/* <STYLES.deleteButton onClick={this.deleteExchange}> X </STYLES.deleteButton> */}
+
+                <h5 style={{paddingLeft: '10px'}}> Exchange key {key + 1 } </h5>
             </STYLES.exchangeDiv>
         )) : null}
         {this.state.editExchange && <ExchangeEdit key={this.state.editExchange} exchange={this.state.exchanges.find(ex => ex.uid === this.state.editExchange)} exchangeID={this.state.editExchange} toggleEditExchange={this.toggleEditExchange} />}

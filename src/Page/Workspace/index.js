@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import * as ROUTES from '../../routes'
 import * as STYLES from './style'
-import WorkspaceUser from '../WorkspaceUser'
-import CharacterWorkSpace from '../CharacterWorkspace'
+// import WorkspaceUser from '../WorkspaceUser'
+// import CharacterWorkSpace from '../CharacterWorkspace'
 import { withFirebase } from '../../Firebase';
 import { withRouter } from 'react-router'
 import Exchange from '../../Exchange/exchange.js'

@@ -17,7 +17,7 @@ const theme = {
 
 const Mp3Recorder = new MicRecorder({ bitRate: 128 });
 
-class DiaglogueWindow extends Component {
+class DialogueWindow extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -133,22 +133,9 @@ class DiaglogueWindow extends Component {
         const { agentPopup, userPopup, scenarios, companyName, description } = this.state
         return (
             <>
-
                 <STYLES.LogoImg src={SproutLogo} alt="sprout-logo" />
                 <STYLES.Title>Dialog Editor</STYLES.Title>
                 <STYLES.ContainerDiv>
-                    <div>
-
-                    </div>
-                    <div>
-                        <button onClick={this.start} disabled={this.state.isRecording}>
-                            Record
-                        </button>
-                        <button onClick={this.stop} disabled={!this.state.isRecording}>
-                            Stop
-                        </button>
-                        <audio src={this.state.blobURL} controls="controls" />
-                    </div>
 
                     <STYLES.SecondTitle> Create Your Scenario: </STYLES.SecondTitle>
                     <STYLES.FormStyle onSubmit={this.handleSubmit}>
@@ -212,4 +199,4 @@ class DiaglogueWindow extends Component {
     }
 }
 
-export default withFirebase(withRouter(DiaglogueWindow))
+export default withFirebase(withRouter(DialogueWindow))

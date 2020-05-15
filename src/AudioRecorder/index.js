@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 import * as ROUTES from '../routes'
 import { withRouter } from 'react-router'
+import * as STYLES from './styledRecorder'
 
 import shortid from 'shortid'
 
@@ -88,15 +89,16 @@ class AudioRecorder extends Component {
         const { agentPopup, userPopup, scenarios, companyName, description } = this.state
         return (
             <>
-               <div>
-                   <button onClick={this.start} disabled={this.state.isRecording}>
-                       Record
-                   </button>
-                   <button onClick={this.stop} disabled={!this.state.isRecording}>
-                       Stop
-                   </button>
+               <STYLES.Container>
+                   <STYLES.RecButton onClick={this.start} disabled={this.state.isRecording}>
+                       Rec
+                   </STYLES.RecButton>
+
+                   <STYLES.StopButton onClick={this.stop} disabled={!this.state.isRecording}>
+                       &#9633;
+                   </STYLES.StopButton>
                    <audio src={this.state.blobURL} controls="controls" />
-               </div>
+               </STYLES.Container>
             </>
         )
     }

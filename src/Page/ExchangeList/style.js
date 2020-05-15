@@ -55,11 +55,12 @@ export const deleteButton = styled.button`
     border-radius: 20px;
     background-color: #FF6858;
     border: none;
-    width: 20%;
+    width: 5%;
     font-family: 'Montserrat', sans-serif;
     font-weight: bold;
     color: white;
-
+    float: right;
+    margin-right: 10px;
 `;
 
 export const editButton = styled.button`

@@ -19,7 +19,7 @@ class Workspace extends Component {
             whichWorkspace : true,
             scenarios: [],
             exchangeLoad: false,
-            exchanges : '',
+            exchanges : '', // ta bort sen 
             type : '',
             answer: '',
             question : '',
@@ -36,6 +36,7 @@ class Workspace extends Component {
         this.setState({toggleWorkspace : cond})
     }
     toggleEditExchange = (exchangeID = null) => {
+        console.log("tEE ran " + exchangeID)
         this.setState({ editExchange: exchangeID})
     }
     componentDidMount() {

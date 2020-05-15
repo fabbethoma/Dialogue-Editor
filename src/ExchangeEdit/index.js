@@ -2,11 +2,13 @@ import React, {Component} from 'react'
 // import Form from 'form-js'
 import { withFirebase } from '../Firebase';
 
+import AudioRecorder from '../AudioRecorder';
+
 import * as STYLES from '../Exchange/styledExchange'
 
 
 const INITIAL_STATE = {
-  data : '',
+  data : '', // ändra till de riktiga variablerna (ex: agent, content och mood)
   type: '',
   question: '',
   answer: ''
@@ -19,6 +21,7 @@ class ExchangeEdit extends Component {
       this.state = props.exchange
   }
   
+
   onChange = (e) => {
     this.setState({ [e.target.name]: e.target.value });
   }
@@ -32,6 +35,7 @@ class ExchangeEdit extends Component {
   }
 
   handleSubmit = (e) => {
+    console.log("EE hS ran")
     const { answer, data, question, type } = this.state
     const exchange = { data, type, question, answer }
 
@@ -75,7 +79,8 @@ componentDidMount () {
         <STYLES.TextInput name='answer' onChange={this.onChange} value={answer} placeholder='Answer here...' />
         <STYLES.Submit type="submit" value="MODIFY" /><STYLES.Submit type="button" value="CANCEL" onClick={() => toggleEditExchange()} />
        </STYLES.FormExchange>
-      </STYLES.DivExchange>                        
+      <AudioRecorder {...this.props} />
+      </STYLES.DivExchange>  
     )
   }
 }

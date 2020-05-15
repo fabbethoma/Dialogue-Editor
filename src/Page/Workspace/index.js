@@ -149,7 +149,7 @@ class Workspace extends Component {
                         } */}
                         </div>: null}
                         {this.state.scenario && this.state.editExchange && <ExchangeEdit scenarioID={this.state.scenario.uid} exchangeID={this.state.editExchange} toggleEditExchange={this.toggleEditExchange} />}
-                        { (this.state.scenario && this.state.scenario.exchanges) && <ExchangeList exchanges={this.state.scenario.exchanges} toggleEditExchange={this.toggleEditExchange} /> }
+                        { (this.state.scenario && this.state.scenario.exchanges) && <ExchangeList scenarioID={this.state.scenario.uid} exchanges={this.state.scenario.exchanges} toggleEditExchange={this.toggleEditExchange} /> }
 
                     </STYLES.WorkspaceDiv>
                 </STYLES.DivWorkspace>

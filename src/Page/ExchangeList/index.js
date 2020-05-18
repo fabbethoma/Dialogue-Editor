@@ -71,15 +71,21 @@ class ExchangeList extends Component {
     console.log(keyID);
     const idKey = Object.keys(this.props.exchanges)[keyID]
     const Obj = this.state.exchanges
-    Object.keys(Obj).reduce((object, key) => {
-      if (key !== keyID) {
-        object[key] = Obj[key]
-      }
-      return object
-    }, {})
-    this.props.firebase.exchange(idKey).remove().then(value => {
-        this.props.firebase.scenarioExchange(getUid).child(`/${idKey}`).remove()
-    })
+
+    const r = window.confirm("Are you sure you want to delete this exchange?");
+
+
+    if (r == true){
+      Object.keys(Obj).reduce((object, key) => {
+        if (key !== keyID) {
+          object[key] = Obj[key]
+        }
+        return object
+      }, {})
+      this.props.firebase.exchange(idKey).remove().then(value => {
+          this.props.firebase.scenarioExchange(getUid).child(`/${idKey}`).remove()
+      })
+    }
   } 
 
 

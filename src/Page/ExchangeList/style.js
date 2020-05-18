@@ -85,3 +85,7 @@ export const TextArea = styled.textarea`
 height: 30px;
 
 `;
+
+export const SpanExchange = styled.span`
+margin : 21.3px 0;
+`

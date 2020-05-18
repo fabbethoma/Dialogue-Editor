@@ -95,7 +95,10 @@ componentDidMount () {
     //const { onSubmit,onChange} = this.props
     const { role, text, mood } = this.state
     const { toggleEditExchange } = this.props
-
+    const OptionValue = {
+      label : mood,
+      value : mood
+    }
     return (
       <STYLES.DivExchange>
           <h3>EDIT MODE</h3>
@@ -109,6 +112,7 @@ componentDidMount () {
             options={INITIAL_MOOD_STATE}
             styles={customStyles}
             onChange={this.selectHandler}
+            value={OptionValue}
           />
 
         <br/>

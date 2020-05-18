@@ -66,13 +66,12 @@ class ExchangeList extends Component {
 
   deleteExchange = (event) => {
     event.preventDefault();
-
-    const keyID = event.target.parentNode.id // check out element.closest()
+    const keyID = event.target.id // check out element.closest()
     const getUid = this.props.scenarioID
     console.log(keyID);
     const idKey = Object.keys(this.props.exchanges)[keyID]
     const Obj = this.state.exchanges
-    const newObj = Object.keys(Obj).reduce((object, key) => {
+    Object.keys(Obj).reduce((object, key) => {
       if (key !== keyID) {
         object[key] = Obj[key]
       }
@@ -91,11 +90,11 @@ class ExchangeList extends Component {
       <div>
 
         {this.state.exchanges ? this.state.exchanges.filter(ex => validExchanges.includes(ex.uid)).map((item,key) => (
-            <STYLES.exchangeDiv key={key} id={key}>
-                <h4><STYLES.editButton onClick={() => this.toggleEditExchange(item.uid)}> EDIT </STYLES.editButton> 
+            <STYLES.exchangeDiv key={key}>
+                <STYLES.SpanExchange><STYLES.editButton onClick={() => this.toggleEditExchange(item.uid)}> EDIT </STYLES.editButton> 
                 Role: {item.role}
-                <STYLES.deleteButton onClick={this.deleteExchange}> X </STYLES.deleteButton>
-                </h4>
+              <STYLES.deleteButton id={key} onClick={this.deleteExchange}> X </STYLES.deleteButton>
+                </STYLES.SpanExchange>
                 {/* <STYLES.p>Role: {item.role}</STYLES.p> */}
                 <STYLES.p> <b>Text: </b> {item.text}</STYLES.p>
                 <STYLES.p> <b>Mood: </b> {item.mood}</STYLES.p>

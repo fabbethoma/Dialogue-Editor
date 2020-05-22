@@ -4,15 +4,21 @@ export const DivExchange = styled.div`
 
 font-family: 'Montserrat', sans-serif;
 margin-left: 30px;
+margin-top: 5em;
+
+
 
 
 border-left: :nth-child(even) {
-    color: red; //Byt till företagsfärg
+    color: green: //Byt till företagsfärg
+    
+
     border-left: 5px;
 }
 
 border-left: :nth-child(odd) {
-    color: blue; //Byt till företagsfärg
+    color: red; //Byt till företagsfärg
+    
 
     border-left: 5px;
 }
@@ -20,10 +26,14 @@ border-left: :nth-child(odd) {
 `;
 
 export const FormExchange = styled.form`
-width: 40%;
+width: 30%;
 display: flex;
 flex-direction: column;
+justify-content: center;
 font-family: 'Montserrat', sans-serif;
+background: #f1f1f1;
+padding: 40px;
+border-radius: 8px;
 
 `;
 
@@ -33,7 +43,9 @@ font-family: 'Montserrat', sans-serif;
 
 export const Label = styled.label`
 font-weight: bold;
-margin-top: 10px;
+font-size: 12px;
+line-height: 22px;
+margin-top: 20px;
 
 `
 
@@ -43,8 +55,9 @@ font-family: 'Montserrat', sans-serif;
 outline: none;
 border: none;
 border-bottom: 1px solid #765CF6;
-font-weight:500;
-font-size:16px;
+font-size: 16px;
+line-height: 22px;
+margin-top: 20px;
 
 :focus {
     transition: 0.5s ease;
@@ -61,8 +74,9 @@ export const TextArea = styled.textarea`
 height: 30px;
 font-family: 'Montserrat', sans-serif;
 outline: none;
-font-weight:500;
-font-size:16px;
+font-size: 16px;
+line-height: 22px;
+margin-top: 20px;
 
 :focus {
     transition: 0.5s ease;
@@ -77,10 +91,10 @@ font-size:16px;
 
 export const Submit = styled.input`
 
-border-radius: 20px;
+border-radius: 30px;
 margin-top: 10px;
-background-color: #765CF6;
-width: 10%;
+background-color: #59D87F;
+width: 20%;
 border: none;
 font-family: 'Montserrat', sans-serif;
 color: white;
@@ -89,10 +103,10 @@ justify-content: flex-end;
 `
 
 export const CancelButton = styled.input`
-background-color: #FF6858;
-border-radius: 20px;
+background-color: #FD7582;
+border-radius: 30px;
 margin-top: 10px;
-width: 10%;
+width: 20%;
 border: none;
 font-family: 'Montserrat', sans-serif;
 color: white;

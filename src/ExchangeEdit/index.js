@@ -37,13 +37,14 @@ const INITIAL_STATE = {
   mood: '',
 };
 
+
+
 class ExchangeEdit extends Component {
   constructor(props) {
       super(props)
   
       this.state = props.exchange
   }
-  
 
   onChange = (e) => {
     this.setState({ [e.target.name]: e.target.value });
@@ -87,6 +88,8 @@ componentDidMount () {
 
 }
 
+
+
 // todo: add component did mount which loads exchange from firebase and sets state
 
 // todo: change handlesubmit so that it updates the exchange, see page 171 road to react with firebase
@@ -99,10 +102,13 @@ componentDidMount () {
       label : mood,
       value : mood
     }
+
+    
+    
+
     return (
       <STYLES.DivExchange>
-          <h3>EDIT MODE</h3>
-        <STYLES.FormExchange onSubmit={this.handleSubmit}>
+        <STYLES.FormExchange  onSubmit={this.handleSubmit}>
         <STYLES.Label>Role: </STYLES.Label>
           <STYLES.TextInput name='role' type="text" onChange={this.onChange} value={role} />
         <STYLES.Label>Text: </STYLES.Label>

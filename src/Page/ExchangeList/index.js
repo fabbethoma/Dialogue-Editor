@@ -19,6 +19,8 @@ class ExchangeList extends Component {
   }
   toggleEditExchange = (exchangeID = null) => {
     console.log("tEE ran " + exchangeID)
+          
+
 
     this.setState({ editExchange: exchangeID})
 }

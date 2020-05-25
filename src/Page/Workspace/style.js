@@ -46,6 +46,7 @@ font-size:18px;
 padding-left:2px;
 margin:0;
 color: #454545;
+justify-content: flex-start;
 `
 export const DivSidebarButton = styled.div`
 display:flex;
@@ -74,7 +75,8 @@ font-size: 12px;
 
 export const TitleScenario = styled.h1`
 text-align:center;
-margin: 0;
+margin: 0 auto;
+// float: right;
 `
 
 export const SwitchDiv = styled.div`
@@ -147,7 +149,7 @@ width: 100%;
 export const DivRowMenue = styled.div`
 display:flex;
 flex-direction:row;
-justify-content: space-between;
+// justify-content: right;
 height: 50px;
 `;
 

@@ -124,7 +124,7 @@ class Workspace extends Component {
                             <STYLES.LinkText>Back</STYLES.LinkText>
                         </STYLES.BackButton>
                         <STYLES.TitleScenario>{this.state.scenario && this.state.scenario.companyName}: {this.state.scenario && this.state.scenario.description }</STYLES.TitleScenario>
-                        <STYLES.SwitchDiv>
+                        {/* <STYLES.SwitchDiv>
                             <STYLES.SwitchButton onClick={() => this.setState({ disableToggle: false })} theme={{ switch: '#FF6858' }} style={{ opacity: `${this.state.disableToggle ? '0.5' : '1'} ` }}>
                                 <STYLES.SwitchText theme={{ switchColor: '#000000' }}>Advanced</STYLES.SwitchText>
                             </STYLES.SwitchButton>
@@ -134,7 +134,7 @@ class Workspace extends Component {
                             <STYLES.SwitchButton theme={{ switch: ' #59D87F' }}>
                                 <STYLES.SwitchText onClick={() => this.setState({ disableToggle: true })} theme={{ switchColor: '#ffffff' }} style={{ opacity: `${!this.state.disableToggle ? '0.5' : '1'} ` }}>Simple</STYLES.SwitchText>
                             </STYLES.SwitchButton>
-                        </STYLES.SwitchDiv>
+                        </STYLES.SwitchDiv> */}
                     </STYLES.DivRowMenue>
                     <STYLES.WorkspaceDiv>
                         <STYLES.CircleButton onClick={this.showToggleUser}>

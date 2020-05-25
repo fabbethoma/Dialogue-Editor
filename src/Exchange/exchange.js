@@ -44,6 +44,23 @@ class Exchange extends Component {
   
       this.state = INITIAL_STATE
   }
+  componentDidMount() {
+    this.props.firebase.exchanges().once('value', (snapshot) => {
+      const objectSnapshot = snapshot.val()
+      if (objectSnapshot){
+         const objectValues = Object.values(objectSnapshot)
+      const filtredValue = objectValues.filter(key => Object.keys(key.scenarios).includes(this.props.scenarioID))
+      const setLenght = filtredValue.length
+      this.setState({ exchangeOrder : setLenght})
+      console.log(objectSnapshot)
+      console.log(this.props.scenarioID)
+      } else {
+        this.setState({ exchangeOrder: 0 })
+      }
+     
+
+    })
+  }
   
   onChange = (e) => {
     this.setState({ [e.target.name]: e.target.value });
@@ -62,14 +79,18 @@ class Exchange extends Component {
   }
 
   handleSubmit = (e) => {
-    const exchange = this.state
-    exchange['scenarios'] = { [this.props.scenarioID]: true }
     
+    const exchange = this.state
+    console.log(this.props.scenarioID)
+    exchange['scenarios'] = { [this.props.scenarioID]: true }
+
     e.preventDefault();
     const ref = this.props.firebase.exchanges().push(exchange);
     this.setState(INITIAL_STATE)
     console.log(ref.key)
     this.props.firebase.scenario(this.props.scenarioID).child('exchanges').update({ [ref.key]: true })
+    const addOrder =  this.state.exchangeOrder+1
+    this.setState({exchangeOrder : addOrder})
   // TODO: add the exchange key we just made to current scenario
 }
 

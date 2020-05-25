@@ -70,9 +70,13 @@ class ExchangeEdit extends Component {
     console.log("EE hS ran")
     const { role, text, mood } = this.state;
     const exchange = { role, text, mood };
-
-    //exchange['scenarios'] = { [this.props.scenarioID]: true }
+    let scenarioID;
+    Object.keys(this.props.exchange.scenarios).forEach(item => scenarioID = item)
     
+    console.log(scenarioID)
+    console.log(this.props.exchange)
+    exchange['exchangeOrder'] = this.props.exchange.exchangeOrder
+    exchange['scenarios'] = { [`${scenarioID}`]: true }
     e.preventDefault();
     this.props.firebase.exchange(this.props.exchangeID).set(exchange); // change to update
     //this.setState(INITIAL_STATE)

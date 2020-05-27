@@ -128,8 +128,8 @@ componentDidMount () {
         <br/>
         <AudioRecorder {...this.props} />
         
-        <STYLES.Submit type="submit" value="MODIFY" />
-        <STYLES.CancelButton type="button" value="CANCEL" onClick={() => toggleEditExchange()} />
+        <STYLES.Submit type="submit">Modify</STYLES.Submit>
+        <STYLES.CancelButton type="button"  onClick={() => toggleEditExchange()}>Cancel</STYLES.CancelButton>
        </STYLES.FormExchange>
 
       </STYLES.DivExchange>  

@@ -8,6 +8,7 @@ import * as STYLES from './style'
 
 import ExchangeEdit from '../../ExchangeEdit';
 
+
 class ExchangeList extends Component {
   constructor(props) {
     super(props)
@@ -216,7 +217,7 @@ class ExchangeList extends Component {
         {this.state.exchanges ? this.state.exchanges.map((item, key) => (
           <STYLES.exchangeDiv key={key}>
             <STYLES.SpanExchange><STYLES.editButton onClick={() => this.toggleEditExchange(item.uid)}> EDIT </STYLES.editButton>
-              <button id={key} onClick={this.duplicateHandle} >Duplicate</button>
+              <STYLES.DuplicateButton  id={key} onClick={this.duplicateHandle} >Duplicate</STYLES.DuplicateButton>
                 Role: {item.role}
               <STYLES.deleteButton id={key} onClick={this.deleteExchange} disabled={this.state.deleteProcess} > X </STYLES.deleteButton>
             </STYLES.SpanExchange>
@@ -226,8 +227,8 @@ class ExchangeList extends Component {
 
             {/* <AudioPlayer url={item.audio} /> */}
             {/* <STYLES.deleteButton onClick={this.deleteExchange}> X </STYLES.deleteButton> */}
-            {key > 0 ? <button onClick={this.uppOrder} style={{ width: '80px' }} id={key}>UppOrder</button> : null}
-            {key < this.state.exchanges.length - 1 ? <button onClick={this.downOrder} style={{ width: '80px' }} id={key}>DownOrder</button> : null}
+            {key > 0 ? <STYLES.OrderButton onClick={this.uppOrder} style={{ width: '80px' }} id={key}>Up</STYLES.OrderButton> : null}
+            {key < this.state.exchanges.length - 1 ? <STYLES.OrderButton onClick={this.downOrder} style={{ width: '80px' }} id={key}>Down</STYLES.OrderButton> : null}
 
             <h5 style={{ paddingLeft: '10px' }}> Exchange key {key + 1} </h5>
           </STYLES.exchangeDiv>

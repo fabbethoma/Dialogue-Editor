@@ -34,6 +34,15 @@ font-family: 'Montserrat', sans-serif;
 background: #f1f1f1;
 padding: 40px;
 border-radius: 8px;
+padding: 0.5rem 1rem;
+border-radius: 40px;
+margin: 0 0.5rem 0 0;
+margin-bottom: 5px;
+background-color: #fff;
+box-shadow: inset 0 0 0 2px #dedfed;
+font-size: 14px;
+font-weight: bold;
+box-sizing: border-box;
 
 `;
 
@@ -50,66 +59,142 @@ margin-top: 20px;
 `
 
 export const TextInput = styled.input`
-height: 30px;
-font-family: 'Montserrat', sans-serif;
-outline: none;
+float: left;
+height: 40px;
 border: none;
-border-bottom: 1px solid #765CF6;
-font-size: 16px;
-line-height: 22px;
-margin-top: 20px;
+padding: 0.5rem 1rem;
+border-radius: 40px;
+margin: 0 0.5rem 0 0;
+margin-bottom: 5px;
+width: calc(100% - 52px);
+background-color: #dedfed;
+box-shadow: inset 0 0 0 2px #dedfed;
+font-size: 14px;
+font-weight: bold;
 
-:focus {
-    transition: 0.5s ease;
-    border-bottom: 2px solid #765CF6;
-}
-
-::placeholder,::-webkit-input-placeholder {
-    color: #7e7e7e;
-  }
+box-sizing: border-box;
 
 `;
 
 export const TextArea = styled.textarea`
-height: 30px;
-font-family: 'Montserrat', sans-serif;
-outline: none;
-font-size: 16px;
-line-height: 22px;
-margin-top: 20px;
+float: left;
+height: 40px;
+border: none;
+padding: 0.5rem 1rem;
+border-radius: 40px;
+margin: 0 0.5rem 0 0;
+margin-bottom: 5px;
+width: calc(100% - 52px);
+background-color: #dedfed;
+box-shadow: inset 0 0 0 2px #dedfed;
+font-size: 14px;
+font-weight: bold;
 
-:focus {
-    transition: 0.5s ease;
-    border-bottom: 2px solid #765CF6;
-}
+box-sizing: border-box;
 
-::placeholder,::-webkit-input-placeholder {
-    color: #7e7e7e;
-  }
 `;
 
 
-export const Submit = styled.input`
+export const Submit = styled.button`
 
-border-radius: 30px;
-margin-top: 10px;
-background-color: #59D87F;
-width: 20%;
-border: none;
-font-family: 'Montserrat', sans-serif;
-color: white;
-justify-content: flex-end;
+width: 15%;
+  background: none;
+  border: 4px solid;
+  color: #59D87F;
+  font-weight: 700;
+  text-transform: uppercase;
+  cursor: pointer;
+  font-size: 13px;
+  font-family: 'Montserrat', sans-serif;
+  position: relative;
+  &:before {  
+    content: "";
+    position: absolute;
+    width: 14px;
+    height: 4px;
+    background: #353b48;
+    transform: skewX(50deg);
+    transition: .4s linear;
+  }
+  &:after {  
+    content: "";
+    position: absolute;
+    width: 14px;
+    height: 4px;
+    background: #353b48;
+    transform: skewX(50deg);
+    transition: .4s linear;
+  }
+  &:before {  
+    top: -4px;
+    left: 10%;
+  }
+  &:after{  
+    bottom: -4px;
+    right: 10%;
+  }
+  &:hover:before {  
+    left: 80%;
+  }
+  &:hover:after{  
+    right: 80%;
+
+  }
+  &:hover{  
+    background: #59D87F;
+    color: white;
+  }
 
 `
+// #FD7582 #59D87F
+export const CancelButton = styled.button`
+width: 15%;
+  background: none;
+  border: 4px solid;
+  color: #FF4444;
+  font-weight: 700;
+  text-transform: uppercase;
+  cursor: pointer;
+  font-size: 13px;
+  font-family: 'Montserrat', sans-serif;
+  position: relative;
+  &:before {  
+    content: "";
+    position: absolute;
+    width: 14px;
+    height: 4px;
+    background: #353b48;
+    transform: skewX(50deg);
+    transition: .4s linear;
+  }
+  &:after {  
+    content: "";
+    position: absolute;
+    width: 14px;
+    height: 4px;
+    background: #353b48;
+    transform: skewX(50deg);
+    transition: .4s linear;
+  }
+  &:before {  
+    top: -4px;
+    left: 10%;
+  }
+  &:after{  
+    bottom: -4px;
+    right: 10%;
+  }
+  &:hover:before {  
+    left: 80%;
+  }
+  &:hover:after{  
+    right: 80%;
 
-export const CancelButton = styled.input`
-background-color: #FD7582;
-border-radius: 30px;
-margin-top: 10px;
-width: 20%;
-border: none;
-font-family: 'Montserrat', sans-serif;
-color: white;
+  }
+  &:hover{  
+    background: #FF4444;
+    color: white;
+  }
 
 `;
 

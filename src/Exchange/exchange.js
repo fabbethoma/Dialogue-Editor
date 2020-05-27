@@ -125,7 +125,7 @@ class Exchange extends Component {
           />
 
           
-        <STYLES.Submit type="submit" value="Save" />
+        <STYLES.Submit type="submit">Save</STYLES.Submit>
        </STYLES.FormExchange>
       </STYLES.DivExchange>                        
     )

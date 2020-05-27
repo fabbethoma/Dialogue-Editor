@@ -155,7 +155,7 @@ class AudioRecorder extends Component {
                        &#9633;
                    </STYLES.StopButton>
                    <audio src={blobURL} controls="controls" />
-                    <button onClick={this.saveAudio} disabled={!audioGet}>Save</button>
+                    <STYLES.SaveButton onClick={this.saveAudio} disabled={!audioGet}>Save</STYLES.SaveButton>
                     {hasAudio ? <button onClick={this.DeleteAudioFromStore}>Remove Audio</button> :
                         <p>No audio is stored</p>
                     }
